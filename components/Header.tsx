@@ -9,15 +9,17 @@ import { GrGroup, GrAppsRounded } from "react-icons/gr";
 import { FaBell } from "react-icons/fa";
 import { AiOutlineMessage } from "react-icons/ai";
 import { useSession, signIn, signOut } from "next-auth/react";
+import { useRouter } from "next/router";
 
 const Header = () => {
   const { data: session } = useSession();
+  const router = useRouter();
 
   return (
     <div className="p-4 flex items-center justify-between border-b lg:px-10">
       {/* LeftSide */}
       <div className="flex items-center mr-2">
-        <div className="w-10 h-10">
+        <div className="w-10 h-10" onClick={() => router.push("/")}>
           <Image src={facebook} alt="facebook" />
         </div>
         <div className="">
