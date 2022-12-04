@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import maria from "../assets/maria.jpg";
 import dots from "../assets/dots.png";
-import car from "../assets/c-class.jpg";
 import hearth from "../assets/hearth.png";
 import like from "../assets/like.png";
+import nouser from "../assets/nouser.png";
 import { BiLike, BiSmile } from "react-icons/bi";
 import { FaRegCommentAlt } from "react-icons/fa";
 import share from "../assets/share.png";
@@ -216,7 +215,11 @@ export default function Post({
       {/* Input */}
       <div className="flex items-center mt-4">
         <div className=" w-10 h-10 shrink-0">
-          <img src={userImg} alt="user" className="rounded-full" />
+          <img
+            src={session ? session.user?.image : nouser.src}
+            alt="user"
+            className="rounded-full"
+          />
         </div>
         <div className="ml-2 w-full rounded-full bg-[#f2f3f7] flex items-center relative">
           <input

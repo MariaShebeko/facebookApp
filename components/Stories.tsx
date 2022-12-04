@@ -29,13 +29,13 @@ export default function Stories() {
         <div className="relative flex w-[4.4rem] h-32 sm:w-24 sm:h-40 ">
           <div className="flex">
             <img
-              src={session?.user?.image}
+              src={session ? session?.user?.image : therock20.src}
               alt="story"
               className="object-cover rounded-[1rem]"
             />
             <div className="flex absolute top-1 left-1 w-9 h-9 p-1 bg-blue-500 rounded-full">
               <img
-                src={session?.user?.image}
+                src={session ? session?.user?.image : therock.src}
                 alt="story"
                 className="rounded-full object-cover"
               />

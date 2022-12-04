@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import facebook from "../assets/facebook1.png";
+import nouser from "../assets/nouser.png";
 import { MdHome } from "react-icons/md";
 import { FiPlayCircle, FiFlag } from "react-icons/fi";
 import { BsCart3 } from "react-icons/bs";
@@ -43,10 +44,9 @@ const Header = () => {
           <AiOutlineMessage className="w-7 h-7" />
         </div>
 
-        <div className="w-10 h-10">
-          {/* <Image src={user} alt="user" className="rounded-full" /> */}
+        <div className="w-10 h-10" onClick={signIn}>
           <img
-            src={session?.user?.image}
+            src={session ? session?.user?.image : nouser.src}
             alt={session?.user?.email}
             className="rounded-full"
           />

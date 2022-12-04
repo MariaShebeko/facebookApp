@@ -4,6 +4,7 @@ import { BsCart3, BsPeopleFill, BsCalendar2Fill } from "react-icons/bs";
 import { RiArrowDownSLine } from "react-icons/ri";
 import { AiOutlineDesktop, AiFillClockCircle } from "react-icons/ai";
 import { useSession, signIn, signOut } from "next-auth/react";
+import nouser from "../assets/nouser.png";
 
 export default function LeftSideBar() {
   const { data: session } = useSession();
@@ -17,15 +18,14 @@ export default function LeftSideBar() {
 
         <div className="flex items-center mt-4">
           <div className="w-9 h-9 shrink-0">
-            {/* <Image src={user} alt="user" className="rounded-full" /> */}
             <img
-              src={session?.user?.image}
+              src={session ? session?.user?.image : nouser.src}
               alt={session?.user?.email}
               className="rounded-full"
             />
           </div>
           <p className="ml-2 font-bold whitespace-nowrap">
-            {session?.user?.name}
+            {session ? session?.user?.name : "Log In"}
           </p>
         </div>
 

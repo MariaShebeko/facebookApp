@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import Image from "next/image";
-import maria from "../assets/maria.jpg";
+import nouser from "../assets/nouser.png";
 import camera from "../assets/camera.png";
 import photos from "../assets/photos.png";
 import smile from "../assets/smile.png";
@@ -64,7 +64,7 @@ export default function CreatePost() {
         <div className="mt-8 flex items-center w-full p-3 pt-4">
           <div className="w-12 h-12 shrink-0">
             <img
-              src={session?.user?.image}
+              src={session ? session?.user?.image : nouser.src}
               alt={session?.user?.email}
               className="rounded-full"
             />
