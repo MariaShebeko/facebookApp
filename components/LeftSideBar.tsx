@@ -1,12 +1,12 @@
 import React from "react";
-import Image from "next/image";
-import user from "../assets/maria.jpg";
 import { MdHome, MdGroups } from "react-icons/md";
 import { BsCart3, BsPeopleFill, BsCalendar2Fill } from "react-icons/bs";
 import { RiArrowDownSLine } from "react-icons/ri";
 import { AiOutlineDesktop, AiFillClockCircle } from "react-icons/ai";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 export default function LeftSideBar() {
+  const { data: session } = useSession();
   return (
     <div className="w-[10rem] hidden sm:block">
       <div className="flex flex-col pt-4 sm:pt-12 pl-7 ">
@@ -16,10 +16,17 @@ export default function LeftSideBar() {
         </div>
 
         <div className="flex items-center mt-4">
-          <div className="w-10 h-10">
-            <Image src={user} alt="user" className="rounded-full" />
+          <div className="w-9 h-9 shrink-0">
+            {/* <Image src={user} alt="user" className="rounded-full" /> */}
+            <img
+              src={session?.user?.image}
+              alt={session?.user?.email}
+              className="rounded-full"
+            />
           </div>
-          <p className="ml-2 font-bold">Log In</p>
+          <p className="ml-2 font-bold whitespace-nowrap">
+            {session?.user?.name}
+          </p>
         </div>
 
         <div className="border-b my-4"></div>
