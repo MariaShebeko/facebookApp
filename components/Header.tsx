@@ -1,16 +1,17 @@
 import Image from "next/image";
 import React from "react";
 import facebook from "../assets/facebook1.png";
-import user from "../assets/maria.jpg";
-
 import { MdHome } from "react-icons/md";
-import { FiPlayCircle, FiFlag, FiMessageCircle } from "react-icons/fi";
+import { FiPlayCircle, FiFlag } from "react-icons/fi";
 import { BsCart3 } from "react-icons/bs";
 import { GrGroup, GrAppsRounded } from "react-icons/gr";
 import { FaBell } from "react-icons/fa";
 import { AiOutlineMessage } from "react-icons/ai";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 const Header = () => {
+  const { data: session } = useSession();
+
   return (
     <div className="p-4 flex items-center justify-between border-b lg:px-10">
       {/* LeftSide */}
@@ -43,7 +44,12 @@ const Header = () => {
         </div>
 
         <div className="w-10 h-10">
-          <Image src={user} alt="user" className="rounded-full" />
+          {/* <Image src={user} alt="user" className="rounded-full" /> */}
+          <img
+            src={session?.user?.image}
+            alt={session?.user?.email}
+            className="rounded-full"
+          />
         </div>
       </div>
     </div>
