@@ -17,16 +17,19 @@ export default function Stories() {
   const { data: session } = useSession();
 
   const stories = [
-    { profile: mikeprofile, background: mike },
-    { profile: mrbeast, background: mrbeastbackground },
-    { profile: kobe, background: kobebackground },
-    { profile: arnold, background: arnoldbackground },
+    { profile: mikeprofile, background: mike, uid: "1" },
+    { profile: mrbeast, background: mrbeastbackground, uid: "2" },
+    { profile: kobe, background: kobebackground, uid: "3" },
+    { profile: arnold, background: arnoldbackground, uid: "4" },
   ];
   return (
     <div className=" flex items-center w-screen sm:w-full h-36 px-2 mt-4 sm:mt-8">
       <div className="w-full flex justify-between space-x-1 sm:space-x-4 p-1 mx-auto max-w-[25rem] sm:max-w-[33rem] px-2 bg-white rounded-[1rem] py-3">
         {/* My story */}
-        <div className="relative flex w-[4.4rem] h-32 sm:w-24 sm:h-40 ">
+        <div
+          key={"My story"}
+          className="relative flex w-[4.4rem] h-32 sm:w-24 sm:h-40 "
+        >
           <div className="flex">
             <img
               src={session ? session?.user?.image : therock20.src}
@@ -44,7 +47,10 @@ export default function Stories() {
         </div>
         {/* Celebrity stories */}
         {stories.map((story) => (
-          <div className="relative flex w-[4.4rem] h-32 sm:w-24 sm:h-40 ">
+          <div
+            key={story.uid}
+            className="relative flex w-[4.4rem] h-32 sm:w-24 sm:h-40 "
+          >
             <div className="flex">
               <Image
                 src={story.background}
