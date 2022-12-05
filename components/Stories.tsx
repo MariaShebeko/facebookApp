@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import therock from "../assets/therock.jpg";
 import therock2 from "../assets/therock2.webp";

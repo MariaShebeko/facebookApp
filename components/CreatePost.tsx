@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useRef, useState } from "react";
 import Image from "next/image";
 import nouser from "../assets/nouser.png";
@@ -29,7 +30,7 @@ export default function CreatePost() {
     const docRef = await addDoc(collection(db, "posts"), {
       profileImg: session?.user?.image,
       username: session?.user?.name,
-      caption: captionRef.current.value,
+      caption: captionRef?.current?.value,
       timestamp: serverTimestamp(),
     });
     // Path for the image
