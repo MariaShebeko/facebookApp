@@ -21,6 +21,7 @@ export default function CreatePost() {
   const captionRef = useRef(null);
   const imageRef = useRef(null);
   const [image, setImage] = useState(null);
+  const [caption, setCaption] = useState("");
 
   const [loading, setLoading] = useState(false);
 
@@ -30,7 +31,7 @@ export default function CreatePost() {
     const docRef = await addDoc(collection(db, "posts"), {
       profileImg: session?.user?.image,
       username: session?.user?.name,
-      caption: captionRef?.current?.value,
+      caption: caption,
       timestamp: serverTimestamp(),
     });
     // Path for the image
@@ -47,7 +48,7 @@ export default function CreatePost() {
 
     setLoading(false);
 
-    captionRef.current.value = null;
+    setCaption("");
   };
 
   // Add image to state
@@ -75,7 +76,11 @@ export default function CreatePost() {
               type="text"
               placeholder="What's up"
               className=" bg-[#f2f3f7] outline-0 rounded-full p-1 pl-3 w-full h-12 truncate"
-              ref={captionRef}
+              // ref={captionRef}
+              value={caption}
+              onChange={(e) => {
+                setCaption(e.target.value);
+              }}
             />
           </div>
 
